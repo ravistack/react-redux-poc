@@ -41,7 +41,7 @@ class App extends Component {
           <h1 className="App-title">Exceptions</h1>
         </header>
         <Grid className="GridApp" fluid={true}>
-          <Row className="">
+          <Row>
             <Col md={12}>
               <DashboardChart />
             </Col>

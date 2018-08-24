@@ -7,12 +7,14 @@ class DashboardChart extends Component{
     this.state = {
       data : {
         labels: [
-          'Red',
-          'Green',
-          'Yellow'
+          'Linkage Check',
+          'Conformity Check',
+          'Business Validation',
+          '14M Domain Validation Check',
+          '14M Field Type Check'
         ],
         datasets: [{
-          data: [300, 50, 100],
+          data: [215, 130, 365, 589, 75],
           backgroundColor: [
           '#FF6384',
           '#36A2EB',
@@ -37,6 +39,12 @@ class DashboardChart extends Component{
           height={300}
           options={{
             maintainAspectRatio: false
+          }}
+          legend={{
+            "display": true,
+            "position": "bottom",
+            "fullWidth": true,
+            "reverse": false,
           }}
         />
       </div>
