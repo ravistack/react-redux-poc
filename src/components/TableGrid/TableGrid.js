@@ -25,58 +25,74 @@ class TableGrid extends React.Component {
             String(row[filter.id]) === filter.value}
           columns={[
             {
-              Header: "Name",
-              columns: [
-                {
-                  Header: "First Name",
-                  accessor: "firstName",
-                  filterMethod: (filter, row) =>
-                    row[filter.id].startsWith(filter.value) &&
-                    row[filter.id].endsWith(filter.value)
-                },
-                {
-                  Header: "Last Name",
-                  id: "lastName",
-                  accessor: d => d.lastName,
-                  filterMethod: (filter, rows) =>
-                    matchSorter(rows, filter.value, { keys: ["lastName"] }),
-                  filterAll: true
-                }
-              ]
+              Header: "As of Date",
+              accessor: "as_of_date",
+              filterMethod: (filter, row) =>
+                row[filter.id].startsWith(filter.value) &&
+                row[filter.id].endsWith(filter.value)
             },
             {
-              Header: "Info",
-              columns: [
-                {
-                  Header: "Age",
-                  accessor: "age"
-                },
-                {
-                  Header: "Over 21",
-                  accessor: "age",
-                  id: "over",
-                  Cell: ({ value }) => (value >= 21 ? "Yes" : "No"),
-                  filterMethod: (filter, row) => {
-                    if (filter.value === "all") {
-                      return true;
-                    }
-                    if (filter.value === "true") {
-                      return row[filter.id] >= 21;
-                    }
-                    return row[filter.id] < 21;
-                  },
-                  Filter: ({ filter, onChange }) =>
-                    <select
-                      onChange={event => onChange(event.target.value)}
-                      style={{ width: "100%" }}
-                      value={filter ? filter.value : "all"}
-                    >
-                      <option value="all">Show All</option>
-                      <option value="true">Can Drink</option>
-                      <option value="false">Can't Drink</option>
-                    </select>
-                }
-              ]
+              Header: "Label Name",
+              accessor: "labelName",
+              filterMethod: (filter, row) =>
+                row[filter.id].startsWith(filter.value) &&
+                row[filter.id].endsWith(filter.value)
+            },
+            {
+              Header: "DQ Rule ID",
+              accessor: "dq_rule_id",
+              filterMethod: (filter, row) =>
+                row[filter.id].startsWith(filter.value) &&
+                row[filter.id].endsWith(filter.value)
+            },
+            {
+              Header: "Category",
+              accessor: "category",
+              filterMethod: (filter, row) =>
+                row[filter.id].startsWith(filter.value) &&
+                row[filter.id].endsWith(filter.value)
+            },
+            {
+              Header: "Progress",
+              accessor: "progress",
+              filterMethod: (filter, row) =>
+                row[filter.id].startsWith(filter.value) &&
+                row[filter.id].endsWith(filter.value)
+            },
+            {
+              Header: "DQ Entity",
+              accessor: "dq_entity",
+              filterMethod: (filter, row) =>
+                row[filter.id].startsWith(filter.value) &&
+                row[filter.id].endsWith(filter.value)
+            },
+            {
+              Header: "DQ Attr",
+              accessor: "dq_attr",
+              filterMethod: (filter, row) =>
+                row[filter.id].startsWith(filter.value) &&
+                row[filter.id].endsWith(filter.value)
+            },
+            {
+              Header: "DQ Attr Value",
+              accessor: "dq_attr_value",
+              filterMethod: (filter, row) =>
+                row[filter.id].startsWith(filter.value) &&
+                row[filter.id].endsWith(filter.value)
+            },
+            {
+              Header: "DQ Excp Msg",
+              accessor: "dq_excp_msg",
+              filterMethod: (filter, row) =>
+                row[filter.id].startsWith(filter.value) &&
+                row[filter.id].endsWith(filter.value)
+            },
+            {
+              Header: "Primary Key",
+              accessor: "primarykey",
+              filterMethod: (filter, row) =>
+                row[filter.id].startsWith(filter.value) &&
+                row[filter.id].endsWith(filter.value)
             }
           ]}
           defaultPageSize={10}
