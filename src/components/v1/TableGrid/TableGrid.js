@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "react-dom";
-import { makeData, Logo, Tips } from "../../utils/utils.js";
+import { makeData, Logo, Tips } from "../../../utils/utils.js";
 import matchSorter from 'match-sorter'
 
 // Import React Table

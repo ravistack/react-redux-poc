@@ -18,12 +18,14 @@ class DashboardChart extends Component{
           backgroundColor: [
           '#FF6384',
           '#36A2EB',
-          '#FFCE56'
+          '#FFCE56',
+          '#15ea6a'
           ],
           hoverBackgroundColor: [
           '#FF6384',
           '#36A2EB',
-          '#FFCE56'
+          '#FFCE56',
+          '#15ea6a'
           ]
         }]
       }
@@ -32,9 +34,9 @@ class DashboardChart extends Component{
   render() {
     const data = this.state.data;
     return (
-      <div className="DashboardChart">
-        <Doughnut 
-          data={data} 
+      <div className="DashboardChart1">
+        <Doughnut
+          data={data}
           width={300}
           height={300}
           options={{

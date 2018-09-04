@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TableGrid from './TableGrid/TableGrid.js';
-import Filters from './Filters/Filters.js';
+import TableFilters from './TableFilters/TableFilters.js';
+import TableActions from './TableActions/TableActions.js';
 import {Grid, Row, Col} from 'react-bootstrap';
 import DashboardChart from './DashboardChart/DashboardChart.js';
 import './app.scss';
@@ -43,38 +44,24 @@ class App extends Component {
         <Grid className="GridApp" fluid={true}>
           <Row className="">
             <Col md={12}>
-              <h3 className="ChartHeader">Rule Failures</h3>
-            </Col>
-            <Col md={12}>
               <DashboardChart />
             </Col>
           </Row>
           <Row>
-            <Col>
-              <IconButton color="secondary" className={classes.button} aria-label="Add an alarm" onClick={this.handleClick}>
-                <Icon>{this.state.clicked ? 'cancel' : 'menu'}</Icon>
-              </IconButton>
+            <Col md={12}>
+              <TableActions />
             </Col>
           </Row>
-          {
-            this.state.clicked && 
-            <Row className="show-grid">
-              <Col md={3}>
-                <Filters />
-              </Col>
-              <Col md={9}>
-                <TableGrid />
-              </Col>
-            </Row> 
-          }
-          {
-            !this.state.clicked && 
-            <Row className="show-grid">
-              <Col md={12}>
-                <TableGrid />
-              </Col>
-            </Row>
-          }
+          <Row>
+            <Col md={12}>
+              <TableFilters />
+            </Col>
+          </Row>
+          <Row className="show-grid">
+            <Col md={12}>
+              <TableGrid />
+            </Col>
+          </Row>
         </Grid>
       </div>
     );
