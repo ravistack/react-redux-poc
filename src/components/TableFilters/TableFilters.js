@@ -1,37 +1,50 @@
 import React, { Component } from 'react';
-import { Button, Form, FormGroup, ControlLabel, FormControl, HelpBlock, Checkbox, Label} from 'react-bootstrap';
+import { Button, Form, FormGroup, InputGroup, ControlLabel, FormControl, HelpBlock, Checkbox, Label} from 'react-bootstrap';
 import './TableFilters.scss';
 class Filters extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isGoing :true,
-            numberOfGuests: 20,
-            products: [
-                { Id: 'p1', Name: 'Product-1'},
-                { Id: 'p2', Name: 'Product-2'},
-                { Id: 'p3', Name: 'Product-3'},
-                { Id: 'p4', Name: 'Product-4'},
-                { Id: 'p5', Name: 'Product-5'},
-                { Id: 'p6', Name: 'Product-6'},
-                { Id: 'p7', Name: 'Product-7'},
-                { Id: 'p8', Name: 'Product-8'},
-                { Id: 'p9', Name: 'Product-9'},
-                { Id: 'p10', Name: 'Product-10'}
-            ],
-            categories: [
-                { Id: 'c1', Name: 'Category-1'},
-                { Id: 'c2', Name: 'Category-2'},
-                { Id: 'c3', Name: 'Category-3'},
-                { Id: 'c4', Name: 'Category-4'},
-                { Id: 'c5', Name: 'Category-5'},
-                { Id: 'c6', Name: 'Category-6'},
-                { Id: 'c7', Name: 'Category-7'},
-                { Id: 'c8', Name: 'Category-8'},
-                { Id: 'c9', Name: 'Category-9'},
-                { Id: 'c10', Name: 'Category-10'}
-            ],
-            rules: [
+          date:'',
+          labelName: '-1',
+          ruleType: '-1',
+          ruleSubType: '-1',
+          tableName: '-1',
+          attribute: '-1'
+        }
+        this.handleSearch = this.handleSearch.bind(this)
+        this.handleChange = this.handleChange.bind(this)
+
+    }
+
+    handleSearch(e){
+      e.preventDefault();
+      console.log(this.state);
+      alert('searching\n');
+    }
+
+    handleChange(e){
+      console.log(e);
+      this.setState({
+        [e.target.id]: e.target.value
+      })
+    }
+
+    componentWillMount(){
+        this.setState({
+          categories: [
+              { Id: 'c1', Name: 'Category-1'},
+              { Id: 'c2', Name: 'Category-2'},
+              { Id: 'c3', Name: 'Category-3'},
+              { Id: 'c4', Name: 'Category-4'},
+              { Id: 'c5', Name: 'Category-5'},
+              { Id: 'c6', Name: 'Category-6'},
+              { Id: 'c7', Name: 'Category-7'},
+              { Id: 'c8', Name: 'Category-8'},
+              { Id: 'c9', Name: 'Category-9'},
+              { Id: 'c10', Name: 'Category-10'}
+          ],
+          rules: [
                 { Id: 'r1', Name: 'Rule-1'},
                 { Id: 'r2', Name: 'Rule-2'},
                 { Id: 'r3', Name: 'Rule-3'},
@@ -42,35 +55,47 @@ class Filters extends Component {
                 { Id: 'r8', Name: 'Rule-8'},
                 { Id: 'r9', Name: 'Rule-9'},
                 { Id: 'r10', Name: 'Rule-10'}
-            ]
-        }
+            ],
+            labels: [
+                  { Id: 'r1', Name: 'label-1'},
+                  { Id: 'r2', Name: 'label-2'},
+                  { Id: 'r3', Name: 'label-3'},
+                  { Id: 'r4', Name: 'label-4'},
+                  { Id: 'r5', Name: 'label-5'},
+                  { Id: 'r6', Name: 'label-6'},
+                  { Id: 'r7', Name: 'label-7'},
+                  { Id: 'r8', Name: 'label-8'},
+                  { Id: 'r9', Name: 'label-9'},
+                  { Id: 'r10', Name: 'label-10'}
+              ]
+        });
     }
 
     render() {
-        const { products, rules, categories } = this.state;
+        const { products, rules, labels, categories } = this.state;
         return (
-            <Form className='FormFilter'>
-                <FormGroup controlId="formControlsSelect">
+            <Form className='FormFilter' onChange={this.handleChange} onSubmit={this.handleSearch}>
+                <FormGroup controlId="asOfDateControl">
                   <ControlLabel>AS OF DATE</ControlLabel>
-                  <FormControl componentClass="select" placeholder="select">
-                    <option value="select">select</option>
+                    <FormControl type="date" bsClass="form-control date-control" placeholder="Select date"/>
+                </FormGroup>
+                <FormGroup controlId="labelNameControl">
+                  <ControlLabel>LABEL NAME</ControlLabel>
+                  <FormControl componentClass="select" placeholder="select" value={this.state.labelName} id="labelName" >
+                    <option value="-1">select</option>
                     {
-                        products.map((product, index) => {
+                        labels.map((label, index) => {
                             return(
-                                <option value={product.Id} key={'products' + index}>{product.Name}</option>
+                                <option value={label.Id} key={'rules' + index}>{label.Name}</option>
                             )
                         })
                     }
                   </FormControl>
                 </FormGroup>
-                <FormGroup controlId="formControlText">
-                  <ControlLabel>LABEL NAME</ControlLabel>
-                  <FormControl type="text" placeholder="LABEL" />
-                </FormGroup>
-                <FormGroup controlId="formControlsSelect">
+                <FormGroup controlId="ruleTypeControl">
                   <ControlLabel>RULE TYPE</ControlLabel>
-                  <FormControl componentClass="select" placeholder="select">
-                    <option value="select">select</option>
+                  <FormControl componentClass="select" placeholder="select" value={this.state.ruleType} id="ruleType" >
+                    <option value="-1">select</option>
                     {
                         rules.map((rule, index) => {
                             return(
@@ -80,9 +105,9 @@ class Filters extends Component {
                     }
                   </FormControl>
                 </FormGroup>
-                <FormGroup controlId="formControlsSelect">
+                <FormGroup controlId="ruleSubTypeControl">
                   <ControlLabel>RULE SUB TYPE</ControlLabel>
-                  <FormControl componentClass="select" placeholder="select">
+                  <FormControl componentClass="select" placeholder="select" value={this.state.ruleSubType} id="ruleSubType">
                     <option value="select">select</option>
                     {
                         rules.map((rule, index) => {
@@ -95,7 +120,7 @@ class Filters extends Component {
                 </FormGroup>
                 <FormGroup controlId="formControlsSelect">
                   <ControlLabel>TABLE NAME</ControlLabel>
-                  <FormControl componentClass="select" placeholder="select">
+                  <FormControl componentClass="select" placeholder="select" value={this.state.tableName} id="tableName">
                     <option value="select">select</option>
                     {
                         categories.map((category, index) => {
@@ -108,7 +133,7 @@ class Filters extends Component {
                 </FormGroup>
                 <FormGroup controlId="formControlsSelect">
                   <ControlLabel>ATTRIBUTE</ControlLabel>
-                  <FormControl componentClass="select" placeholder="select">
+                  <FormControl componentClass="select" placeholder="select" value={this.state.attribute} id="attribute">
                     <option value="select">select</option>
                     {
                         categories.map((category, index) => {
@@ -120,7 +145,7 @@ class Filters extends Component {
                   </FormControl>
                 </FormGroup>
                 <FormGroup>
-                  <Button bsStyle="primary" bsSize="large" block>
+                  <Button bsStyle="primary" bsSize="large" block onClick={this.handleSearch}>
                     Search
                   </Button>
                 </FormGroup>
