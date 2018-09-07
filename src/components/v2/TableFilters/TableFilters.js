@@ -50,12 +50,8 @@ class Filters extends Component {
         const { products, rules, categories } = this.state;
         return (
             <Form className='FormFilter'>
-                <FormGroup controlId="formControlText">
-                  <ControlLabel>LABEL NAME</ControlLabel>
-                  <FormControl type="text" placeholder="LABEL" />
-                </FormGroup>
                 <FormGroup controlId="formControlsSelect">
-                  <ControlLabel>PRODUCT</ControlLabel>
+                  <ControlLabel>AS OF DATE</ControlLabel>
                   <FormControl componentClass="select" placeholder="select">
                     <option value="select">select</option>
                     {
@@ -66,6 +62,10 @@ class Filters extends Component {
                         })
                     }
                   </FormControl>
+                </FormGroup>
+                <FormGroup controlId="formControlText">
+                  <ControlLabel>LABEL NAME</ControlLabel>
+                  <FormControl type="text" placeholder="LABEL" />
                 </FormGroup>
                 <FormGroup controlId="formControlsSelect">
                   <ControlLabel>RULE TYPE</ControlLabel>

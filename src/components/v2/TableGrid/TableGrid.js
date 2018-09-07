@@ -6,7 +6,11 @@ import matchSorter from 'match-sorter'
 // Import React Table
 import ReactTable from "react-table";
 import "react-table/react-table.css";
+import checkboxHOC from "react-table/lib/hoc/selectTable";
 import './TableGrid.scss';
+
+const CheckboxTable = checkboxHOC(ReactTable);
+
 class TableGrid extends React.Component {
   constructor() {
     super();

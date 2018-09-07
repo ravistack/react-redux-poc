@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import TableGrid from './TableGrid/TableGrid.js';
 import TableFilters from './TableFilters/TableFilters.js';
-import TableActions from './TableActions/TableActions.js';
+// import TableActions from './TableActions/TableActions.js';
 import {Grid, Row, Col} from 'react-bootstrap';
 import DashboardChart from './DashboardChart/DashboardChart.js';
 import './app.scss';
@@ -42,19 +42,14 @@ class App extends Component {
           <h1 className="App-title">Exceptions</h1>
         </header>
         <Grid className="GridApp" fluid={true}>
-          <Row className="">
-            <Col md={12}>
-              <DashboardChart />
-            </Col>
-          </Row>
-          <Row>
-            <Col md={12}>
-              <TableActions />
-            </Col>
-          </Row>
           <Row>
             <Col md={12}>
               <TableFilters />
+            </Col>
+          </Row>
+          <Row className="">
+            <Col md={12}>
+              <DashboardChart />
             </Col>
           </Row>
           <Row className="show-grid">

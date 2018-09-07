@@ -14,29 +14,29 @@ class DashboardChart extends Component{
             data: [215],
             label: 'LINKAGE',
             stack: 'stack0',
-            backgroundColor: '#FF6384',
-            hoverBackgroundColor: '#FF6384'
+            backgroundColor: '#3E51B5',
+            hoverBackgroundColor: '#3E51B5'
           },
           {
             data: [130],
             label: 'CONFORMITY',
             stack: 'stack0',
-            backgroundColor:'#36A2EB',
-            hoverBackgroundColor:'#36A2EB'
+            backgroundColor:'#982AAE',
+            hoverBackgroundColor:'#982AAE'
           },
           {
             data: [365],
             label: 'BUSINESS VALIDATION',
             stack: 'stack0',
-            backgroundColor: '#FFCE56',
-            hoverBackgroundColor: '#FFCE56'
+            backgroundColor: '#E72061',
+            hoverBackgroundColor: '#E72061'
           },
           {
             data: [589],
             label: 'TECHNICAL VALIDATION',
             stack: 'stack0',
-            backgroundColor: '#15ea6a',
-            hoverBackgroundColor: '#15ea6a'
+            backgroundColor: '#FF9702',
+            hoverBackgroundColor: '#FF9702'
           }
         ]
       }
@@ -49,10 +49,18 @@ class DashboardChart extends Component{
         <HorizontalBar
           data={data}
           width={300}
-          height={300}
+          height={150}
           options={{
             maintainAspectRatio: false,
             reponsive: true,
+            layout:{
+              padding:{
+                left: 0,
+                right: 0,
+                top:0,
+                bottom: 0
+              }
+            },
             scales: {
               xAxes: [{
                 stacked: true,
@@ -76,6 +84,7 @@ class DashboardChart extends Component{
             "position": "bottom",
             "fullWidth": true,
             "reverse": false,
+            "onClick": (e) => e.stopPropagation()
           }}
         />
       </div>
