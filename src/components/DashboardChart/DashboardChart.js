@@ -53,6 +53,11 @@ class DashboardChart extends Component{
           options={{
             maintainAspectRatio: false,
             reponsive: true,
+            title:{
+              display: true,
+              position: 'top',
+              text: 'EXCEPTIONS'
+            },
             layout:{
               padding:{
                 left: 0,
